@@ -1,0 +1,10 @@
+{
+    "development": {
+      "username": "pgbuilder",
+      "password": "pgbuilder",
+      "database": "buildings_pg",
+      "host": "localhost",
+      "dialect": "postgres"
+    }
+}
+  
