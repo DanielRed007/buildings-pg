@@ -1,12 +1,18 @@
-import express from 'express';
-import { createNewBuilding, getBuildingById, getBuildings, editBuilding, deleteBuilding } from '../controllers/building.controller';
+import { Router } from 'express';
+import BuildingsController from "../controllers/building.controller";
 
-const router = express.Router();
+class BuildingRoutes {
+    router = Router();
+    controller = new BuildingsController();
 
-router.post('/', createNewBuilding);
-router.get('/', getBuildings);
-router.get('/:id', getBuildingById);
-router.put('/:id', editBuilding);
-router.delete('/:id', deleteBuilding);
+    constructor() {
+        this.intializeRoutes();
+    }
 
-export default router;
+    intializeRoutes() {
+
+        this.router.get("/", this.controller.findAll);
+    }
+}
+
+export default new BuildingRoutes().router;
