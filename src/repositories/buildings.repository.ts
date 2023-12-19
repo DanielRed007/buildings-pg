@@ -1,27 +1,31 @@
 import { Building } from "../models/Building";
 import { Op } from "sequelize";
 
-interface ITutorialRepository {
+interface IBuildingRepository {
   retrieveAll(searchParams: {title: string, published: boolean}): Promise<Building[]>;
 }
 
-class TutorialRepository implements ITutorialRepository {
+class BuildingRepository implements IBuildingRepository {
 
-    async retrieveAll(searchParams?: {title?: string, published?: boolean}): Promise<Building[]> {
+    async retrieveAll(): Promise<Building[]> {
         try {
-          let condition: any = {};
-      
-          if (searchParams?.published) condition.published = true;
-      
-          if (searchParams?.title)
-            condition.title = { [Op.like]: `%${searchParams.title}%` };
-
           return await Building.findAll();
         } catch (error) {
           throw new Error("Failed to retrieve Buildings!");
         }
     }
 
+    async create(building: Building): Promise<Building> {
+      try {
+        return await Building.create({
+          name: building.name,
+          address: building.address
+        });
+      } catch (err) {
+        throw new Error("Failed to create Tutorial!");
+      }
+  }
+
 }
 
-export default new TutorialRepository();
+export default new BuildingRepository();

@@ -12,6 +12,8 @@ class BuildingRoutes {
     intializeRoutes() {
 
         this.router.get("/", this.controller.findAll);
+
+        this.router.post("/", this.controller.createBuilding);
     }
 }
 
