@@ -10,7 +10,7 @@ export default class BuildingController {
 
       res.status(200).json({
         message: "findAll OK",
-        ...buildings
+        buildings
       });
     } catch (err) {
       res.status(500).json({
@@ -28,6 +28,7 @@ export default class BuildingController {
         reqBody: newBuilding
       });
     } catch (error) {
+
       res.status(500).json({
         message: error
       });

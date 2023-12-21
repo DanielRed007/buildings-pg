@@ -2,7 +2,8 @@ import { Building } from "../models/Building";
 import { Op } from "sequelize";
 
 interface IBuildingRepository {
-  retrieveAll(searchParams: {title: string, published: boolean}): Promise<Building[]>;
+  retrieveAll(): Promise<Building[]>;
+  create(building: Building): Promise<Building>;
 }
 
 class BuildingRepository implements IBuildingRepository {
@@ -11,7 +12,7 @@ class BuildingRepository implements IBuildingRepository {
         try {
           return await Building.findAll();
         } catch (error) {
-          throw new Error("Failed to retrieve Buildings!");
+          throw error;
         }
     }
 
@@ -21,8 +22,8 @@ class BuildingRepository implements IBuildingRepository {
           name: building.name,
           address: building.address
         });
-      } catch (err) {
-        throw new Error("Failed to create Tutorial!");
+      } catch (error) {
+        throw error;
       }
   }
 
