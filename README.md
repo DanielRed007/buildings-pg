@@ -27,6 +27,21 @@ A prototype REST API built in NodeJS + Typescript + PostgresSQL
   npm run migrate
 ```
 
+## API Reference
+
+#### GET all Buildings
+
+```http
+  GET /api/buildings
+```
+### Create a New Building
+
+**Endpoint:**
+
+```http
+POST /api/buildings
+```
+
 ## Appendix
 
 The project architecture is made under the repository pattern using classes and initializers to optimize the code splitting and distributiion in a more organized way.
