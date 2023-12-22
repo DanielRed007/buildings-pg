@@ -32,15 +32,42 @@ A prototype REST API built in NodeJS + Typescript + PostgresSQL
 #### GET all Buildings
 
 ```http
-  GET /api/buildings
+GET /api/buildings
 ```
-### Create a New Building
+#### GET Building By id
 
-**Endpoint:**
+```http
+GET /api/buildings/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of building to fetch |
+
+#### UPDATE Building By id
+
+```http
+UPDATE /api/buildings/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of building to update |
+
+### Create a New Building
 
 ```http
 POST /api/buildings
 ```
+#### DELETE Building By id
+
+```http
+DELETE /api/buildings/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of building to delete |
 
 ## Appendix
 
