@@ -13,7 +13,13 @@ class BuildingRoutes {
 
         this.router.get("/", this.controller.findAll);
 
+        this.router.get("/:id", this.controller.findById);
+
         this.router.post("/", this.controller.createBuilding);
+
+        this.router.put("/:id", this.controller.updateBuilding);
+
+        this.router.delete("/:id", this.controller.deleteBuilding);
     }
 }
 
