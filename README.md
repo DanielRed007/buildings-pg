@@ -69,6 +69,12 @@ DELETE /api/buildings/${id}
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | **Required**. Id of building to delete |
 
+## 🔗  Documentation
+
+Buildings PG has Swagger UI as API documentation as default, whenever you want to check every endpoint, just make sure you have the API running in local properly, and when running just go to the browser to the following location:
+
+(http://localhost:3000/api-docs/#/)
+
 ## Appendix
 
 The project architecture is made under the repository pattern using classes and initializers to optimize the code splitting and distributiion in a more organized way.
