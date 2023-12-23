@@ -1,5 +1,4 @@
 import express, { Application } from 'express';
-import buildingRoutes from './routes/building.route';
 import Server from './server';
 
 const app: Application = express();
