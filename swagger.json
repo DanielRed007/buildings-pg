@@ -1,0 +1,221 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Buildings PG",
+      "version": "1.0.0",
+      "description": "A building API built in Postgres SQL"
+    },
+    "basePath": "/",
+    "schemes": ["http", "https"],
+    "tags": [
+        {
+          "name": "Buildings",
+          "description": "Operations related to Buildings"
+        }
+    ],
+    "paths": {
+      "/api/buildings": {
+        "get": {
+          "tags": ["Buildings"],
+          "summary": "Get list of Buildings",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Building"
+                }
+              },
+              "examples": {
+                "application/json": [
+                  {
+                    "id": "83c5a1c5-24f7-418b-b7f2-13d3045008c0",
+                    "name": "The Panteon",
+                    "address": "Agripa Street 777, Rome",
+                    "createdAt": "2023-12-22T21:26:12.230Z",
+                    "updatedAt": "2023-12-22T21:26:12.230Z"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": ["Buildings"],
+          "summary": "Create a Building",
+          "parameters": [
+            {
+              "name": "building",
+              "in": "body",
+              "description": "The building object to be created",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "The Mausoleum of Augustus"
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "Piazza di Poppolo 2134, Rome"
+                  }
+                },
+                "required": ["name", "address"]
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Building created successfully",
+              "schema": {
+                "$ref": "#/definitions/Building"
+              },
+              "examples": {
+                "application/json": {
+                  "id": "83c5a1c5-24f7-418b-b7f2-13d3045008c0",
+                  "name": "The Panteon",
+                  "address": "Agripa Street 777, Rome",
+                  "createdAt": "2023-12-22T21:26:12.230Z",
+                  "updatedAt": "2023-12-22T21:26:12.230Z"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/buildings/{id}": {
+        "get": {
+          "tags": ["Buildings"],
+          "summary": "Get a Building by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the building",
+              "required": true,
+              "type": "string",
+              "format": "uuid"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "$ref": "#/definitions/Building"
+              },
+              "examples": {
+                "application/json": {
+                  "id": "83c5a1c5-24f7-418b-b7f2-13d3045008c0",
+                  "name": "The Panteon",
+                  "address": "Agripa Street 777, Rome",
+                  "createdAt": "2023-12-22T21:26:12.230Z",
+                  "updatedAt": "2023-12-22T21:26:12.230Z"
+                }
+              }
+            },
+            "404": {
+              "description": "Building not found"
+            }
+          }
+        },
+        "put": {
+          "tags": ["Buildings"],
+          "summary": "Update a Building by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the building",
+              "required": true,
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "name": "building",
+              "in": "body",
+              "description": "The updated building object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Building"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Building updated successfully",
+              "schema": {
+                "$ref": "#/definitions/Building"
+              },
+              "examples": {
+                "application/json": {
+                  "id": "83c5a1c5-24f7-418b-b7f2-13d3045008c0",
+                  "name": "The Panteon",
+                  "address": "Agripa Street 777, Rome",
+                  "createdAt": "2023-12-22T21:26:12.230Z",
+                  "updatedAt": "2023-12-22T21:26:12.230Z"
+                }
+              }
+            },
+            "404": {
+              "description": "Building not found"
+            }
+          }
+        },
+        "delete": {
+          "tags": ["Buildings"],
+          "summary": "Delete a Building by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the building to be deleted",
+              "required": true,
+              "type": "string",
+              "format": "uuid"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Building deleted successfully"
+            },
+            "404": {
+              "description": "Building not found"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Building": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "83c5a1c5-24f7-418b-b7f2-13d3045008c0"
+          },
+          "name": {
+            "type": "string",
+            "example": "The Panteon"
+          },
+          "address": {
+            "type": "string",
+            "example": "Agripa Street 777, Rome"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-12-22T21:26:12.230Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-12-22T21:26:12.230Z"
+          }
+        }
+      }
+    }
+}
+  
