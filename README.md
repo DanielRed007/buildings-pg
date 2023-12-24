@@ -11,6 +11,7 @@ A prototype REST API built in NodeJS + Typescript + PostgresSQL
 - Typescript
 - Postgres SQL
 - Sequelize
+- Sequelize CLI
 
 
 ## Set Up
@@ -21,10 +22,16 @@ A prototype REST API built in NodeJS + Typescript + PostgresSQL
   npm run dev
 ```
 
-1. to migrate the tables run:
+2. to migrate the tables run:
 
 ```bash
-  npm run migrate
+  npx sequelize-cli db:migrate
+```
+
+3. to create new migrations you should run the following script:
+
+```bash
+  npx sequelize-cli migration:generate --name your_migration_name
 ```
 
 ## API Reference
