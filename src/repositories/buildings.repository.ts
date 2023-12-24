@@ -4,6 +4,9 @@ import { Op } from "sequelize";
 interface IBuildingRepository {
   retrieveAll(): Promise<Building[]>;
   create(building: Building): Promise<Building>;
+  retrieveById(id: string): Promise<Building | null>;
+  updateById(id: string, updates: Partial<Building>): Promise<Building | null>;
+  deleteById(id: string): Promise<boolean>;
 }
 
 class BuildingRepository implements IBuildingRepository {

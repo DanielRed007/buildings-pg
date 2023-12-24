@@ -1,17 +1,17 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/db/database';
 
-class Building extends Model {
+class Floor extends Model {
   public id!: typeof DataTypes.UUID;
   public name!: string;
-  public address!: string;
+  public buildingId!: typeof DataTypes.UUID;
 
-  static associate(models: any){
-    Building.hasMany(models.Floor);
+  static associate(models: any) {
+    Floor.belongsTo(models.Building, { foreignKey: 'buildingId' });
   }
 }
 
-Building.init(
+Floor.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -23,16 +23,22 @@ Building.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    address: {
-      type: DataTypes.STRING,
+    buildingId: {
+      type: DataTypes.UUID,
       allowNull: false,
+      references: {
+        model: 'buildings',
+        key: 'id',
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
     },
   },
   {
     sequelize,
-    tableName: 'buildings',
+    tableName: 'floors',
     timestamps: true,
   }
 );
 
-export { Building };
+export { Floor };
