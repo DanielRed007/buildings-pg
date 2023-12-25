@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/db/database';
 
 class Building extends Model {
-  public id!: typeof DataTypes.UUID;
+  public id!: number;
   public name!: string;
   public address!: string;
 
@@ -14,8 +14,8 @@ class Building extends Model {
 Building.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUID,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
       allowNull: false,
     },
