@@ -2,9 +2,9 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/db/database';
 
 class Floor extends Model {
-  public id!: typeof DataTypes.UUID;
+  public id!: number;
   public name!: string;
-  public buildingId!: typeof DataTypes.UUID;
+  public buildingId!: number;
 
   static associate(models: any) {
     Floor.belongsTo(models.Building, { foreignKey: 'buildingId' });
@@ -14,8 +14,8 @@ class Floor extends Model {
 Floor.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUID,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
       allowNull: false,
     },
@@ -24,7 +24,7 @@ Floor.init(
       allowNull: false,
     },
     buildingId: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'buildings',
