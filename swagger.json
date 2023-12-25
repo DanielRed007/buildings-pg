@@ -185,6 +185,66 @@
             }
           }
         }
+      },
+      "/api/floors": {
+        "get": {
+          "tags": ["Floors"],
+          "summary": "Get list of Floors",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Floors"
+                }
+              },
+              "examples": {
+                "application/json": [
+                  {
+                    "id": 1,
+                    "name": "The Panteon",
+                    "buildingId": 1
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "/api/floors/{id}": {
+        "get": {
+          "tags": ["Floors"],
+          "summary": "Get a Floors by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the building",
+              "required": true,
+              "type": "integer",
+              "format": "int64" 
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "$ref": "#/definitions/Building"
+              },
+              "examples": {
+                "application/json": {
+                  "id": 1,
+                  "name": "The Panteon",
+                  "buildingId": 2
+                }
+              }
+            },
+            "404": {
+              "description": "Floor not found"
+            }
+          }
+        }
       }
     },
     "definitions": {
@@ -213,6 +273,25 @@
             "type": "string",
             "format": "date-time",
             "example": "2023-12-22T21:26:12.230Z"
+          }
+        }
+      },
+      "Floor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64", 
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "The Panteon"
+          },
+          "buildingId": {
+            "type": "integer",
+            "format": "int64", 
+            "example": 1
           }
         }
       }
