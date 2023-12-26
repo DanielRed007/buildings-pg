@@ -276,7 +276,7 @@
           }
         }
       },
-      "Floor": {
+      "Floors": {
         "type": "object",
         "properties": {
           "id": {

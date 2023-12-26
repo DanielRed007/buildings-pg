@@ -8,6 +8,8 @@
     "dev": "ts-node src/index.ts",
     "build": "tsc",
     "migrate": "npx sequelize db:migrate --url 'postgres://pgbuilder:pgbuilder@localhost:5432/buildings_pg'",
+    "cli-migrate": "sequelize-cli db:migrate",
+    "cli-db-drop": "sequelize-cli db:drop",
     "seed": "sequelize db:seed:all",
     "undo-migrate": "sequelize db:migrate:undo",
     "undo-seed": "sequelize db:seed:undo:all",
