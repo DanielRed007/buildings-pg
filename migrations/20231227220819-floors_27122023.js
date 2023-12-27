@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('buildings', {
+    await queryInterface.createTable('floors', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -13,9 +13,19 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      address: {
-        type: Sequelize.STRING,
+      capacity: {
+        type: Sequelize.INTEGER,
         allowNull: false,
+      },
+      buildingId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'buildings',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -29,6 +39,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('buildings');
+    await queryInterface.dropTable('floors');
   },
 };

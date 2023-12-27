@@ -1,5 +1,4 @@
 import { Floor } from "../models/Floor";
-import { Op } from "sequelize";
 
 interface IFloorRepository {
   retrieveAll(): Promise<Floor[]>;
@@ -19,6 +18,18 @@ class FloorRepository implements IFloorRepository {
   async retrieveById(id: string): Promise<Floor | null> {
     try {
       return await Floor.findByPk(id);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async create(floorData: any): Promise<Floor> {
+    try {
+      return await Floor.create({
+        name: floorData.name,
+        capacity: floorData.capacity,
+        buildingId: floorData.buildingId
+      });
     } catch (error) {
       throw error;
     }

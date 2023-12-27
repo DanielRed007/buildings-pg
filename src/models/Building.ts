@@ -5,6 +5,9 @@ class Building extends Model {
   public id!: number;
   public name!: string;
   public address!: string;
+  public type!: string;
+  public foundationYear!: string;
+  public status!: string; 
 
   static associate(models: any){
     Building.hasMany(models.Floor);
@@ -24,6 +27,18 @@ Building.init(
       allowNull: false,
     },
     address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    foundationYear: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    status: {
       type: DataTypes.STRING,
       allowNull: false,
     },
