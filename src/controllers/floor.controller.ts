@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import floorsRepository from "../repositories/floors.repository";
+import buildingsRepository from "../repositories/buildings.repository";
 
 export default class BuildingController {
 
@@ -24,6 +25,38 @@ export default class BuildingController {
 
       res.status(200).json({
         building
+      });
+    } catch (err) {
+      res.status(500).json({
+        message: err
+      });
+    }
+  }
+
+  async createFloor(req: Request, res: Response) {
+    try {
+      const buildingId = req.body.buildingId;
+      
+      const building = await buildingsRepository.retrieveById(buildingId);
+
+      if(!building){
+        res.status(404).json({
+          message: 'Building not found'
+        });
+
+        return;
+      }
+
+      const newFloor = {
+        name: req.body.name,
+        capacity: req.body.capacity,
+        buildingId: buildingId
+      };
+
+      await floorsRepository.create(newFloor);
+
+      res.status(201).json({
+        message: 'Floor Created'
       });
     } catch (err) {
       res.status(500).json({

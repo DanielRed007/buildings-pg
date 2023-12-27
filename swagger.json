@@ -33,6 +33,8 @@
                     "id": 1,
                     "name": "The Panteon",
                     "address": "Agripa Street 777, Rome",
+                    "type": "PUBLIC",
+                    "status": "ACTIVE",
                     "createdAt": "2023-12-22T21:26:12.230Z",
                     "updatedAt": "2023-12-22T21:26:12.230Z"
                   }
@@ -60,6 +62,14 @@
                   "address": {
                     "type": "string",
                     "example": "Piazza di Poppolo 2134, Rome"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "PUBLIC"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "ACTIVE"
                   }
                 },
                 "required": ["name", "address"]
@@ -210,6 +220,55 @@
               }
             }
           }
+        },
+        "post": {
+          "tags": ["Floors"],
+          "summary": "Create a Floor",
+          "parameters": [
+            {
+              "name": "floor",
+              "in": "body",
+              "description": "The floor object to be created",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "The Mausoleum of Augustus"
+                  },
+                  "capacity": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1
+                  },
+                  "buildingId": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 1
+                  }
+                },
+                "required": ["name", "capacity", "buildingId"]
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Building created successfully",
+              "schema": {
+                "$ref": "#/definitions/Building"
+              },
+              "examples": {
+                "application/json": {
+                  "id": 1,
+                  "name": "The Panteon",
+                  "address": "Agripa Street 777, Rome",
+                  "createdAt": "2023-12-22T21:26:12.230Z",
+                  "updatedAt": "2023-12-22T21:26:12.230Z"
+                }
+              }
+            }
+          }
         }
       },
       "/api/floors/{id}": {
@@ -287,6 +346,11 @@
           "name": {
             "type": "string",
             "example": "The Panteon"
+          },
+          "capacity": {
+            "type": "integer",
+            "format": "int64", 
+            "example": 8
           },
           "buildingId": {
             "type": "integer",

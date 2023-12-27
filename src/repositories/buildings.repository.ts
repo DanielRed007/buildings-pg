@@ -23,7 +23,10 @@ class BuildingRepository implements IBuildingRepository {
     try {
       return await Building.create({
         name: building.name,
-        address: building.address
+        address: building.address,
+        type: building.type,
+        foundationYear: building.foundationYear,
+        status: building.status
       });
     } catch (error) {
       throw error;

@@ -4,6 +4,7 @@ import { sequelize } from '../config/db/database';
 class Floor extends Model {
   public id!: number;
   public name!: string;
+  public capacity!: number;
   public buildingId!: number;
 
   static associate(models: any) {
@@ -17,10 +18,14 @@ Floor.init(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-      allowNull: false,
+      allowNull: true,
     },
     name: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    capacity: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     buildingId: {
