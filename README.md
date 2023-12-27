@@ -34,7 +34,9 @@ A prototype REST API built in NodeJS + Typescript + PostgresSQL
   npx sequelize-cli migration:generate --name your_migration_name
 ```
 
-## API Reference
+# API Reference
+
+## Buildings
 
 #### GET all Buildings
 
@@ -75,6 +77,29 @@ DELETE /api/buildings/${id}
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | **Required**. Id of building to delete |
+
+## Floors
+
+#### GET all Floors
+
+```http
+GET /api/floors
+```
+#### GET Floors By id
+
+```http
+GET /api/floors/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of floor to fetch |
+
+### Create a New Floor
+
+```http
+POST /api/floors
+```
 
 ## 🔗  Documentation
 
