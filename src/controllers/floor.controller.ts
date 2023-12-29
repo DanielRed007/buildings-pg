@@ -65,4 +65,34 @@ export default class BuildingController {
     }
   }
 
+  async updateFloor(req: Request, res: Response) {
+    try {
+      const id = req.params.id;
+      const updates = req.body;
+
+      const updateFloor = await floorsRepository.updateById(id,updates);
+
+      res.status(201).json(updateFloor);
+    } catch (error) {
+
+      res.status(500).json({
+        message: error
+      });
+    }
+  }
+
+  async deleteFloor(req: Request, res: Response) {
+    try {
+      const id = req.params.id;
+      const deleteFloor = await floorsRepository.deleteById(id);
+
+      res.status(200).json(deleteFloor);
+    } catch (error) {
+
+      res.status(500).json({
+        message: error
+      });
+    }
+  }
+
 }
