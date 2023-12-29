@@ -100,6 +100,21 @@ GET /api/floors/${id}
 ```http
 POST /api/floors
 ```
+#### UPDATE Floor By id
+
+```http
+UPDATE /api/floors/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of floor to update |
+
+#### DELETE Floor By id
+
+```http
+DELETE /api/floors/${id}
+```
 
 ## 🔗  Documentation
 
