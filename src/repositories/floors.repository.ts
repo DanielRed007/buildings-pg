@@ -34,6 +34,36 @@ class FloorRepository implements IFloorRepository {
       throw error;
     }
   }
+
+  async updateById(id: string, updates: Partial<Floor>): Promise<Floor | null> {
+    try {
+      const floor = await Floor.findByPk(id);
+
+      if(floor){
+        await floor.update(updates);
+        return floor;
+      }
+
+      return null;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async deleteById(id: string): Promise<boolean> {
+    try {
+      const floor = await Floor.findByPk(id);
+
+      if(floor){
+        await floor.destroy();
+        return true;
+      }
+
+      return false;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default new FloorRepository();

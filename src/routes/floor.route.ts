@@ -16,6 +16,10 @@ class FloorRoutes {
         this.router.get("/:id", this.controller.findById);
 
         this.router.post("/", this.controller.createFloor);
+
+        this.router.put("/:id", this.controller.updateFloor);
+
+        this.router.delete("/:id", this.controller.deleteFloor);
     }
 }
 
