@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      alias: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       buildingId: {
         type: Sequelize.INTEGER,
         allowNull: false,

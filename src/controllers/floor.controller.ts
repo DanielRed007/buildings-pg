@@ -50,6 +50,7 @@ export default class BuildingController {
       const newFloor = {
         name: req.body.name,
         capacity: req.body.capacity,
+        alias: req.body.alias,
         buildingId: buildingId
       };
 

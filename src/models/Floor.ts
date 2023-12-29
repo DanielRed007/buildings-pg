@@ -28,6 +28,10 @@ Floor.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    alias: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     buildingId: {
       type: DataTypes.INTEGER,
       allowNull: false,

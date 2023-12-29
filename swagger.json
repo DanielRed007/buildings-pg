@@ -242,6 +242,10 @@
                     "format": "int64",
                     "example": 1
                   },
+                  "alias": {
+                    "type": "string",
+                    "example": "The Milennial wonder of Rome"
+                  },
                   "buildingId": {
                     "type": "integer",
                     "format": "int64",
@@ -414,6 +418,10 @@
             "type": "integer",
             "format": "int64", 
             "example": 8
+          },
+          "alias": {
+            "type": "string",
+            "example": "The Milennial wonder of Rome"
           },
           "buildingId": {
             "type": "integer",
